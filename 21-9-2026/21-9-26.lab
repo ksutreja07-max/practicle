@@ -1,0 +1,118 @@
+# Lab Work #3.4
+# List of Dictionaries
+
+students = [
+    {"id": 101, "name": "Alice", "score": 85},
+    {"id": 102, "name": "Bob", "score": 78},
+    {"id": 103, "name": "Charlie", "score": 92}
+]
+
+# 1. Print the name of each student using a loop
+
+print("Student Names")
+
+for student in students:
+    print(student["name"])
+
+
+# 2. Print the average score of all students
+
+total = 0
+
+for student in students:
+    total = total + student["score"]
+
+average = total / len(students)
+
+print("\nAverage Score:", average)
+
+
+# 3. Add a new student record to the list
+
+students.append({"id": 104, "name": "David", "score": 88})
+
+print("\nAfter Adding New Student")
+print(students)
+
+
+# 4. Update the score of a student with ID 102 to 88
+
+for student in students:
+    if student["id"] == 102:
+        student["score"] = 88
+
+print("\nAfter Updating Score")
+print(students)
+
+
+# 5. Delete the record of the student named "Charlie"
+
+for student in students:
+    if student["name"] == "Charlie":
+        students.remove(student)
+        break
+
+print("\nAfter Deleting Charlie")
+print(students)
+
+
+# 6. Print names of students who scored more than 80
+
+print("\nStudents Who Scored More Than 80")
+
+for student in students:
+    if student["score"] > 80:
+        print(student["name"])
+
+
+# 7. Sort the list of students by score in descending order
+
+students.sort(key=lambda x: x["score"], reverse=True)
+
+print("\nStudents Sorted By Score")
+print(students)
+
+
+# 8. Find the student with the highest score
+
+highest = students[0]
+
+print("\nHighest Scoring Student")
+print(highest["name"], "-", highest["score"])
+
+
+# 9. Create a report with grades
+
+print("\nStudent Report")
+
+for student in students:
+
+    if student["score"] >= 90:
+        grade = "A"
+    elif student["score"] >= 80:
+        grade = "B"
+    else:
+        grade = "C"
+
+    print("Name:", student["name"], "| Score:", student["score"], "| Grade:", grade)
+
+
+# 10. Count how many students got each grade
+
+grade_A = 0
+grade_B = 0
+grade_C = 0
+
+for student in students:
+
+    if student["score"] >= 90:
+        grade_A = grade_A + 1
+    elif student["score"] >= 80:
+        grade_B = grade_B + 1
+    else:
+        grade_C = grade_C + 1
+
+print("\nGrade Count")
+print("A Grade:", grade_A)
+print("B Grade:", grade_B)
+print("C Grade:", grade_C)
