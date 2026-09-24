@@ -1,0 +1,340 @@
+# Lab Work #4.2
+# Recursion, Lambda and Global Variables
+
+
+# Q1. Recursive function to calculate factorial
+
+def factorial(number):
+
+    if number < 0:
+        return "Factorial is not possible for negative number"
+
+    if number == 0 or number == 1:
+        return 1
+
+    return number * factorial(number - 1)
+
+
+print("Q1. Factorial:", factorial(5))
+
+
+# Q2. Recursive Fibonacci number
+
+def fibonacci(number):
+
+    if number == 0:
+        return 0
+
+    if number == 1:
+        return 1
+
+    return fibonacci(number - 1) + fibonacci(number - 2)
+
+
+print("\nQ2. Fibonacci Number:", fibonacci(7))
+
+
+# Q3. Reverse a string using recursion
+
+def reverse_string(text):
+
+    if len(text) == 0:
+        return text
+
+    return reverse_string(text[1:]) + text[0]
+
+
+print("\nQ3. Reverse String:", reverse_string("Python"))
+
+
+# Q4. Sum of digits until single digit
+
+def sum_digits(number):
+
+    if number < 10:
+        return number
+
+    total = 0
+
+    while number > 0:
+        total = total + number % 10
+        number = number // 10
+
+    return sum_digits(total)
+
+
+print("\nQ4. Single Digit:", sum_digits(9875))
+
+
+# Q5. Print all prime numbers between two numbers
+
+def is_prime(number):
+
+    if number < 2:
+        return False
+
+    for i in range(2, number):
+        if number % i == 0:
+            return False
+
+    return True
+
+
+def prime_numbers(start, end):
+
+    if start > end:
+        return
+
+    if is_prime(start):
+        print(start)
+
+    prime_numbers(start + 1, end)
+
+
+print("\nQ5. Prime Numbers:")
+prime_numbers(10, 30)
+
+
+# Q6. Lambda function to calculate square
+
+square = lambda number: number ** 2
+
+print("\nQ6. Square:", square(5))
+
+numbers = [1, 2, 3, 4, 5]
+
+squares = list(map(lambda number: number ** 2, numbers))
+
+print("Squares using map:", squares)
+
+
+# Q7. Filter odd numbers using lambda and filter()
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+odd_numbers = list(filter(lambda number: number % 2 != 0, numbers))
+
+print("\nQ7. Odd Numbers:", odd_numbers)
+
+
+# Q8. Lambda function to find largest of three numbers
+
+largest = lambda a, b, c: max(a, b, c)
+
+print("\nQ8. Largest Number:", largest(25, 50, 35))
+
+
+# Q9. Global variable to count function calls
+
+count = 0
+
+
+def my_count():
+
+    global count
+
+    count = count + 1
+
+    print("Function called", count, "times")
+
+
+print("\nQ9.")
+my_count()
+my_count()
+my_count()
+
+
+# Q10. Global variable updated inside function
+
+total = 0
+
+
+def add_number(number):
+
+    global total
+
+    total = total + number
+
+
+print("\nQ10.")
+
+add_number(10)
+add_number(20)
+add_number(30)
+
+print("Total:", total)
+
+
+# Q11. Modify global username
+
+username = "Kuldip"
+
+
+def update_username(new_name):
+
+    global username
+
+    username = new_name
+
+
+print("\nQ11.")
+
+print("Old Username:", username)
+
+update_username("Rahul")
+
+print("New Username:", username)
+
+
+# Q12. Initialize and increment global variable
+
+number = 0
+
+
+def initialize():
+
+    global number
+
+    number = 0
+
+
+def increment():
+
+    global number
+
+    number = number + 1
+
+
+print("\nQ12.")
+
+initialize()
+
+increment()
+increment()
+increment()
+
+print("Value:", number)
+
+
+# Q13. Difference between local and global variables
+
+number = 100
+
+
+def show_number():
+
+    number = 50
+
+    print("Local Number:", number)
+
+
+print("\nQ13.")
+
+print("Global Number:", number)
+
+show_number()
+
+
+# Q14. Return sum, maximum and minimum
+
+def list_values(numbers):
+
+    total = sum(numbers)
+    maximum = max(numbers)
+    minimum = min(numbers)
+
+    return total, maximum, minimum
+
+
+numbers = [10, 20, 5, 40, 15]
+
+result = list_values(numbers)
+
+print("\nQ14.")
+print("Sum:", result[0])
+print("Maximum:", result[1])
+print("Minimum:", result[2])
+
+
+# Q15. Area and perimeter of rectangle
+
+def rectangle(length, width):
+
+    area = length * width
+    perimeter = 2 * (length + width)
+
+    return area, perimeter
+
+
+result = rectangle(10, 5)
+
+print("\nQ15.")
+print("Area:", result[0])
+print("Perimeter:", result[1])
+
+
+# Q16. Return square and cube in a tuple
+
+def square_cube(number):
+
+    square = number ** 2
+    cube = number ** 3
+
+    return square, cube
+
+
+result = square_cube(5)
+
+print("\nQ16.")
+print("Square:", result[0])
+print("Cube:", result[1])
+
+
+# Q17. Split string into vowels and other characters
+
+def split_string(text):
+
+    vowels = ""
+    others = ""
+
+    for character in text:
+
+        if character.lower() in "aeiou":
+            vowels = vowels + character
+        else:
+            others = others + character
+
+    return vowels, others
+
+
+result = split_string("Python Programming")
+
+print("\nQ17.")
+print("Vowels:", result[0])
+print("Other Characters:", result[1])
+
+
+# Q18. Separate words starting with vowels and consonants
+
+def separate_words(words):
+
+    vowel_words = []
+    consonant_words = []
+
+    for word in words:
+
+        if word[0].lower() in "aeiou":
+            vowel_words.append(word)
+        else:
+            consonant_words.append(word)
+
+    return vowel_words, consonant_words
+
+
+words = ["apple", "banana", "orange", "mango", "umbrella", "grapes"]
+
+result = separate_words(words)
+
+print("\nQ18.")
+print("Words Starting With Vowels:", result[0])
+print("Words Starting With Consonants:", result[1])
