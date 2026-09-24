@@ -1,0 +1,234 @@
+# Lab Work #4.1
+# Python Functions
+
+
+# Q1. Built-in Functions
+
+numbers = [10, 25, 5, 40, 15]
+
+print("Original List:", numbers)
+print("Length:", len(numbers))
+print("Maximum:", max(numbers))
+print("Minimum:", min(numbers))
+print("Sorted List:", sorted(numbers))
+print("Sum:", sum(numbers))
+
+
+# Q2. User-Defined Function to calculate factorial
+
+def factorial(number):
+    fact = 1
+
+    for i in range(1, number + 1):
+        fact = fact * i
+
+    return fact
+
+
+num = 5
+print("\nFactorial of", num, "is", factorial(num))
+
+
+# Q3. UDF using List Comprehension
+
+def square_numbers(numbers):
+    return [number ** 2 for number in numbers]
+
+
+numbers = [1, 2, 3, 4, 5]
+
+print("\nOriginal Numbers:", numbers)
+print("Square Numbers:", square_numbers(numbers))
+
+
+# Q4. Frequency of each character
+
+def character_frequency(text):
+    frequency = {}
+
+    for character in text:
+        if character in frequency:
+            frequency[character] = frequency[character] + 1
+        else:
+            frequency[character] = 1
+
+    return frequency
+
+
+text = "hello"
+
+print("\nCharacter Frequency:", character_frequency(text))
+
+
+# Q5. UDF as an argument
+
+def calculate_list(numbers):
+    total = sum(numbers)
+    return total
+
+
+def process_list(function, numbers):
+    return function(numbers)
+
+
+numbers = [10, 20, 30, 40]
+
+print("\nList:", numbers)
+print("Sum of List:", process_list(calculate_list, numbers))
+
+
+# Q6. Arbitrary number of integer arguments
+
+def sum_and_product(*numbers):
+    total = 0
+    product = 1
+
+    for number in numbers:
+        total = total + number
+        product = product * number
+
+    return total, product
+
+
+result = sum_and_product(2, 3, 4, 5)
+
+print("\nSum:", result[0])
+print("Product:", result[1])
+
+
+# Q7. *args with student names
+
+def student_names(*names):
+
+    if len(names) == 0:
+        print("The student list is empty.")
+    else:
+        for name in names:
+            print(name)
+
+
+print("\nStudent Names:")
+student_names("Alice", "Bob", "Charlie", "David")
+
+
+# Q8. Filter strings using *args
+
+def filter_strings(*args):
+
+    strings = []
+    numbers = []
+
+    for value in args:
+        if isinstance(value, str):
+            strings.append(value)
+        else:
+            numbers.append(value)
+
+    return tuple(strings), tuple(numbers)
+
+
+result = filter_strings("Apple", 10, "Banana", 20, "Mango", 30)
+
+print("\nStrings:", result[0])
+print("Numbers:", result[1])
+
+
+# Q9. **kwargs person details
+
+def person_details(**kwargs):
+    for key, value in kwargs.items():
+        print(key, ":", value)
+
+
+print("\nPerson Details:")
+person_details(name="Kuldip", age=18, city="Junagadh")
+
+
+# Q10. Product details using **kwargs
+
+def product_details(**kwargs):
+
+    name = kwargs.get("name")
+    price = kwargs.get("price")
+    quantity = kwargs.get("quantity")
+
+    total = price * quantity
+
+    print("\nProduct:", name)
+    print("Price:", price)
+    print("Quantity:", quantity)
+    print("Total Cost:", total)
+
+
+product_details(name="Laptop", price=50000, quantity=2)
+
+
+# Q11. Employee details using **kwargs
+
+def employee_details(**kwargs):
+
+    required_fields = ["name", "department", "salary"]
+
+    for field in required_fields:
+        if field not in kwargs:
+            print("Missing field:", field)
+        else:
+            print(field, ":", kwargs[field])
+
+
+print("\nEmployee Details:")
+employee_details(name="Rahul", department="IT", salary=30000)
+
+
+# Q12. Rectangle Area with docstring
+
+def rectangle_area(length, width):
+    """
+    Calculate the area of a rectangle.
+
+    Parameters:
+    length - Length of rectangle
+    width - Width of rectangle
+
+    Returns:
+    Area of rectangle
+    """
+
+    return length * width
+
+
+print("\nRectangle Area:", rectangle_area(10, 5))
+
+print("\nDocstring:")
+print(rectangle_area.__doc__)
+
+
+# Q13. Fibonacci Sequence with docstring
+
+def fibonacci(number):
+    """
+    Return Fibonacci sequence up to a given number.
+
+    Parameters:
+    number - Number of terms
+
+    Returns:
+    Fibonacci sequence
+    """
+
+    sequence = []
+
+    a = 0
+    b = 1
+
+    for i in range(number):
+        sequence.append(a)
+        a, b = b, a + b
+
+    return sequence
+
+
+print("\nFibonacci Sequence:", fibonacci(10))
+
+print("\nDocstring:")
+print(fibonacci.__doc__)
